@@ -20,13 +20,6 @@ ggplot(pca_df, aes(x = PC1, y = PC2, color = Group, label = rownames(pca_df))) +
 dev.off()
 
 
-
-
-
-
-
-
-
 #Figure 2C Heatmap using pheatmap for all the protein expression data
 library(grid)
 library(pheatmap)
@@ -47,13 +40,6 @@ pheatmap(as.matrix(data),
          scale = "row", # Normalize rows to show Z-scores
          show_rownames = FALSE)
 dev.off()
-
-
-
-
-
-
-
 
 
 
@@ -82,7 +68,7 @@ contrast_matrix <- makeContrasts(
 )
 fit2 <- contrasts.fit(fit, contrast_matrix)
 fit2 <- eBayes(fit2)
-# Extract differential metabolites
+# Extract differential proteins
 # Disease effect: HFD vs LFD
 results_HFD_vs_LFD <- topTable(fit2, coef = "HFD_vs_LFD", adjust = "fdr", number = Inf)
 # Treatment effect: HFD_inf vs HFD
